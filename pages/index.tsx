@@ -7,7 +7,12 @@ const Home: NextPage = () => {
 	return (
 		<div>
 			<Head>
-				<title>Gallereakit</title>
+				<title>Gallereakit</title>\
+				<meta
+					name="viewport"
+					content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+				/>
+				<meta name="robots" content="noindex" />
 			</Head>
 			<PhotoGallery />
 		</div>
