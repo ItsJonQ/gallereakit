@@ -1,11 +1,12 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { createApi } from 'unsplash-js';
-import fixtures from '../../data/photos.fixtures.json';
 
-const unsplash = createApi({
-	accessKey: process.env.UNSPLASH_ACCESS_KEY as string,
-});
+import page1 from '../../data/photos-1.fixtures.json';
+import page2 from '../../data/photos-2.fixtures.json';
+import page3 from '../../data/photos-3.fixtures.json';
+import page4 from '../../data/photos-4.fixtures.json';
+
+const photosDB = [page1, page2, page3, page4];
 
 function remapUnsplashPhotos(data) {
 	return data.map((item) => {
@@ -33,18 +34,20 @@ export default async function handler(
 	res: NextApiResponse<any>
 ) {
 	try {
+		const {
+			query: { page },
+		} = req;
+		const pageNumber = page ? Number(page) - 1 : 0;
+
 		/**
-		 * Get photos from Unsplash.
+		 * Get photos from photos DB (Source is Unsplash).
 		 *
 		 * @see https://github.com/unsplash/unsplash-js#photoslistarguments-additionalfetchoptions
 		 */
-		// const results = await unsplash.photos.list({ page: 1, perPage: 9 });
-		// const photos = results.response.results
-
-		const photos = fixtures;
+		const photos = photosDB[pageNumber];
 		res.status(200).json(remapUnsplashPhotos(photos));
 	} catch (err) {
 		console.log(err);
-		res.status(400).json({ message: 'error' });
+		res.status(400).json([]);
 	}
 }

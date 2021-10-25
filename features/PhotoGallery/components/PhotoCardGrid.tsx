@@ -8,7 +8,7 @@ const GridView = styled.div({
 	gridTemplateColumns: 'repeat(3, 1fr)',
 	maxWidth: 960,
 	gap: 20,
-	margin: '0 auto',
+	margin: '20px auto',
 });
 
 export function PhotoCardGrid(props: PhotoCardGrid) {
