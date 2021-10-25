@@ -22,7 +22,7 @@ What we need is a **one to many** setup. Where we have many preview cards that o
 
 Layers (plural). Next.js provides us with a back-end via their `pages/api/` directory. However, it is useful to create some sort of organized API (middleware) that grabs things from the back-end and tidies up the code for our React components.
 
-### Feature hook logic (e.g. usePhotosState)
+### Feature hook logic (e.g. usePhotoGallery)
 
 You don't _have_ to do this. However, I like abstracting as much logic I can into hooks to keep the primary component as simple and tidy as possible. If you do this, the job of the primary component is to stitch everything together.
 
