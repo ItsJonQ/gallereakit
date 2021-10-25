@@ -47,7 +47,7 @@ const photosApi = {
 /**
  * This is the brain! All of the business logic happens here.
  */
-function usePhotosState() {
+function usePhotoGallery() {
   const [photos, setPhotos] = React.useState<PhotosData>([]);
   const [loading, setLoading] = React.useState(false);
   const [currentPhoto, setCurrentPhoto] = React.useState<PhotoData>();
@@ -227,7 +227,7 @@ export function PhotoGallery() {
     getPrevPage,
     disablePrevPage,
     disableNextPage,
-  } = usePhotosState();
+  } = usePhotoGallery();
   const dialog = useDialogState({ animated: true });
 
   /**
